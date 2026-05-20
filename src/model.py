@@ -42,8 +42,6 @@ def train_lstm_and_predict(df, seq_length=60, epochs=5, batch_size=32):
 
     X, y = create_sequences(scaled, seq_length)
 
-    X = np.reshape(X, (X.shape[0], X.shape[1], 1))
-
     model = Sequential(
         [
             LSTM(50, return_sequences=True, input_shape=(X.shape[1], 1)),
