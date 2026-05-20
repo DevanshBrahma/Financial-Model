@@ -6,7 +6,6 @@ An end-to-end **finance + CS** project that combines:
 - **Backtesting** with performance metrics (ROI, Sharpe, Max Drawdown)
 - **Plots** for model and strategy performance
 
-> Built as a simple Python backend project suitable for a 2nd‑year CS resume.
 
 ## Features
 - Download historical stock data using `yfinance`
