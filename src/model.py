@@ -13,6 +13,18 @@ def create_sequences(data, seq_length=60):
 
 
 def train_lstm_and_predict(df, seq_length=60, epochs=5, batch_size=32):
+    """Train an LSTM on close prices and append inverse-scaled predictions.
+
+    Args:
+        df: Price dataframe containing a `Close` column.
+        seq_length: Number of timesteps per training sequence.
+        epochs: Number of training epochs.
+        batch_size: Training batch size.
+
+    Returns:
+        A tuple `(df, preds)` where `df` is trimmed to prediction rows and includes
+        `Predicted_Close`, and `preds` is the inverse-scaled predictions array.
+    """
     close_prices = df[["Close"]].values
 
     scaler = MinMaxScaler()

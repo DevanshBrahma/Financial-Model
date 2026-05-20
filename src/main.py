@@ -22,7 +22,7 @@ def main():
     df = add_indicators(df)
 
     # 3) Train LSTM + predict
-    df, preds = train_lstm_and_predict(df)
+    df, _ = train_lstm_and_predict(df)
 
     # 4) Backtest strategy
     equity_curve = backtest_strategy(df)
@@ -34,7 +34,7 @@ def main():
         print(f"{k}: {v:.4f}")
 
     # 6) Plots
-    plot_predictions(df, preds)
+    plot_predictions(df)
     plot_equity_curve(equity_curve)
     plot_drawdown(equity_curve)
 

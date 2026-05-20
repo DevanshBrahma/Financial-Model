@@ -1,9 +1,16 @@
+import os
+
 import matplotlib.pyplot as plt
 
 OUTPUT_DIR = "outputs"
 
 
-def plot_predictions(df, preds):
+def _ensure_output_dir():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+
+def plot_predictions(df):
+    _ensure_output_dir()
     plt.figure(figsize=(10, 5))
     plt.plot(df["Close"], label="Actual Close")
     plt.plot(df["Predicted_Close"], label="Predicted Close")
@@ -14,6 +21,7 @@ def plot_predictions(df, preds):
 
 
 def plot_equity_curve(equity_curve):
+    _ensure_output_dir()
     plt.figure(figsize=(10, 5))
     plt.plot(equity_curve, label="Equity Curve")
     plt.title("Strategy Equity Curve")
@@ -23,6 +31,7 @@ def plot_equity_curve(equity_curve):
 
 
 def plot_drawdown(equity_curve):
+    _ensure_output_dir()
     drawdown = (equity_curve / equity_curve.cummax()) - 1
     plt.figure(figsize=(10, 5))
     plt.plot(drawdown, label="Drawdown")

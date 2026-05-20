@@ -1,9 +1,12 @@
 import numpy as np
 
+LONG = 1
+SHORT = -1
+
 
 def backtest_strategy(df):
-    # Basic strategy: if predicted close > actual close -> buy, else sell
-    df["Signal"] = np.where(df["Predicted_Close"] > df["Close"], 1, -1)
+    # Basic strategy: LONG when predicted close > actual close, otherwise SHORT.
+    df["Signal"] = np.where(df["Predicted_Close"] > df["Close"], LONG, SHORT)
     df["Returns"] = df["Close"].pct_change()
     df["Strategy_Returns"] = df["Signal"].shift(1) * df["Returns"]
 

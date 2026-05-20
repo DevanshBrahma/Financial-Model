@@ -5,8 +5,10 @@ def add_rsi(df, period=14):
     delta = df["Close"].diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+    loss = loss.replace(0, pd.NA)
     rs = gain / loss
     df["RSI"] = 100 - (100 / (1 + rs))
+    df["RSI"] = df["RSI"].fillna(100)
     return df
 
 
