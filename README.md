@@ -35,9 +35,6 @@ python src/main.py --ticker AAPL --start 2018-01-01 --end 2024-12-31
 - `outputs/strategy_equity_curve.png`
 - `outputs/strategy_drawdown.png`
 
-## Resume Line (example)
-> Built an ML-driven trading system with LSTM price prediction, technical indicators (RSI/MACD), and backtesting metrics (ROI, Sharpe, max drawdown), implemented in Python with data visualization.
-
 ---
 
 **Disclaimer:** This project is for educational purposes only and not financial advice.
