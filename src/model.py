@@ -5,6 +5,16 @@ from tensorflow.keras.models import Sequential
 
 
 def create_sequences(data, seq_length=60):
+    """Create sliding-window sequences for time-series prediction.
+
+    Args:
+        data: 2D numpy array of shape (n_samples, 1) with scaled close prices.
+        seq_length: Number of previous timesteps included in each input sample.
+
+    Returns:
+        Tuple `(X, y)` where `X` has shape (n_sequences, seq_length, 1) before
+        final reshaping and `y` has shape (n_sequences, 1).
+    """
     X, y = [], []
     for i in range(seq_length, len(data)):
         X.append(data[i - seq_length : i])

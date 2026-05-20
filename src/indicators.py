@@ -8,7 +8,7 @@ def add_rsi(df, period=14):
     loss = loss.replace(0, pd.NA)
     rs = gain / loss
     df["RSI"] = 100 - (100 / (1 + rs))
-    df["RSI"] = df["RSI"].fillna(100)
+    df.loc[loss.isna(), "RSI"] = 100
     return df
 
 
